@@ -59,6 +59,7 @@ public class Main {
             threadsPotrosac[i].start();
         }
 
+		new Scanner(System.in).nextLine(); //da se prekine kad se klikne enter
         for (int i = 0; i < 3; i++)
         {
             threadsIzvestavac[i].join();
