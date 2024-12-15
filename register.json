@@ -1,0 +1,31 @@
+http://localhost:8080/domaci1/korisnik/register
+{
+  "ime" : "Mike",
+  "prezime" : "James",
+  "korisnickoIme" : "mjames",
+  "email" : "mjames@gmail.com",
+  "datumRodjenja": "1.05.1989.",
+  "sifra" : "123",
+  "stanje" : 2000
+}
+
+http://localhost:8080/domaci1/korisnik/login
+{
+  "username" : "mjames",
+  "password" : "123"
+}
+
+pretraga
+http://localhost:8080/domaci1/proizvod/pretraga?donjaGranica=0&gornjaGranica=500&kljucnaRec=Kingston&korisnikId=1
+
+http://localhost:8080/domaci1/proizvod/svi
+
+http://localhost:8080/domaci1/proizvod/1
+
+http://localhost:8080/domaci1/proizvod/poVrsti?vrsta=GPU
+
+http://localhost:8080/domaci1/kupovina
+{
+  "proizvodId": 1,
+  "korisnikId": 1
+}
