@@ -1,0 +1,1 @@
+docker run --name racunarska_oprema -e MYSQL_ROOT_PASSWORD=pass -e MYSQL_USER=user -e MYSQL_PASSWORD=pass -e MYSQL_DATABASE=racunarska_oprema -p 3306:3306 -d mysql:latest
