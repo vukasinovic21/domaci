@@ -1,0 +1,53 @@
+DROP DATABASE IF EXISTS racunarska_oprema;
+CREATE DATABASE racunarska_oprema;
+USE racunarska_oprema;
+
+CREATE TABLE `korisnik` (
+  `korisnik_id` INTEGER PRIMARY KEY AUTO_INCREMENT,
+  `ime_i_prezime` VARCHAR(255),
+  `username` VARCHAR(255),
+  `email` VARCHAR(255),
+  `sifra` VARCHAR(255),
+  `datum_rodjenja` VARCHAR(255),
+  `stanje_racuna` INTEGER,
+  `kolicina_potrosenog_novca` INTEGER
+);
+
+CREATE TABLE `proizvod` (
+  `proizvod_id` INTEGER PRIMARY KEY AUTO_INCREMENT,
+  `naziv` VARCHAR(255),
+  `cena` INTEGER,
+  `vrsta_opreme` VARCHAR(255),
+  `stanje_na_lageru` INTEGER
+);
+
+CREATE TABLE `podesavanje_pretrage` (
+  `id` INTEGER PRIMARY KEY AUTO_INCREMENT,
+  `donja_granica_obima_cene` INTEGER,
+  `gornja_granica_obima_cene` INTEGER,
+  `vrsta_opreme` VARCHAR(255),
+  `kljucna_rec` VARCHAR(255),
+  `korisnikId` INTEGER,
+  FOREIGN KEY (`korisnikId`) REFERENCES `korisnik` (`korisnik_id`)
+);
+
+CREATE TABLE `kupovina` (
+  `id` INTEGER PRIMARY KEY AUTO_INCREMENT,
+  `proizvod_id` INTEGER,
+  `korisnik_id` INTEGER,
+  FOREIGN KEY (`proizvod_id`) REFERENCES `proizvod` (`proizvod_id`),
+  FOREIGN KEY (`korisnik_id`) REFERENCES `korisnik` (`korisnik_id`)
+);
+
+INSERT INTO `proizvod` (`naziv`, `cena`, `vrsta_opreme`, `stanje_na_lageru`)
+VALUES
+('NVIDIA RTX 4090', 1800, 'GPU', 10),
+('Intel Core i9-13900K', 650, 'CPU', 15),
+('Corsair Vengeance 32GB RAM', 150, 'Memory', 25),
+('Samsung 980 Pro SSD 1TB', 120, 'Storage', 50);
+
+INSERT INTO `korisnik` (`ime_i_prezime`, `username`, `email`, `datum_rodjenja`, `stanje_racuna`, `kolicina_potrosenog_novca`, `sifra`)
+VALUES
+('Nikola', 'Vukasinovic', 'nikola@gmail.com', '2000-01-15', 6000, 0, '123'),
+('Marko', 'Markovic', 'marko@gmail.com', '1995-03-03', 2000, 700, '123'),
+('Mika', 'Mikic', 'mika@gmail.com', '2002-11-11', 0, 4200, '123');
